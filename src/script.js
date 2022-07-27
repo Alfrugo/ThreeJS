@@ -17,6 +17,9 @@ const canvas = document.querySelector('canvas.webgl')
 // Scene
 const scene = new THREE.Scene()
 
+// Clock to get the frame rate independent of computer CPU power
+
+const clock = new THREE.Clock()
 
 // Object
 
@@ -43,7 +46,7 @@ const sizes = {
 }
 
 //camera
-const  camera = new THREE.PerspectiveCamera(75, sizes.width / sizes.height, 0.1, 100 )
+const  camera = new THREE.PerspectiveCamera(75, sizes.width / sizes.height, 0.1, 300 )
 camera.position.x = 1
 camera.position.y = 1
 camera.position.z = 20
@@ -66,9 +69,16 @@ renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2
 // Animations
 
 const tick = () => {
+
+    // Clock
+    const elapsedTime = clock.getElapsedTime()
+
     // console.log('tick')
 
-    sphere.position.x += 0.01
+    sphere.position.x += Math.sin(elapsedTime)
+    sphere.position.y += Math.cos(elapsedTime)
+    sphere.rotation.z = elapsedTime * Math.PI * 2 
+    camera.lookAt(sphere.position)
 
     renderer.render(scene, camera)
 
