@@ -3,10 +3,14 @@ import * as THREE from 'three'
 import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls.js'
 // import * as dat from 'dat.gui'
 import typefaceFont from 'three/examples/fonts/helvetiker_regular.typeface.json'
-import { Mesh } from 'three'
+// import { Mesh } from 'three'
+
+import gsap from 'gsap'
+
+console.log (gsap)
 // console.log(THREE)
 
-console.log(OrbitControls)
+// console.log(OrbitControls)
 
 // // Debug
 // const gui = new dat.GUI()
@@ -23,12 +27,15 @@ const clock = new THREE.Clock()
 
 // Object
 
-const material = new THREE.MeshBasicMaterial()
+const material = new THREE.MeshBasicMaterial({color: 0xff0000})
 
 const sphere = new THREE.Mesh(
-    new THREE.BoxBufferGeometry(16, 16 , 16),
+    new THREE.BoxGeometry(1, 1, 1),
     material
 )
+
+
+
 
 // const plane = new THREE.Plane(
 //     new THREE.PlaneBufferGeometry(1,1),
@@ -52,6 +59,12 @@ camera.position.y = 1
 camera.position.z = 20
 scene.add(camera)
 
+
+// Green Sock
+
+gsap.to(sphere.position, { duration: 1, delay: 1, x: 2 }) 
+
+
 // Controls
 const controls = new OrbitControls(camera, canvas)
 
@@ -70,15 +83,15 @@ renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2
 
 const tick = () => {
 
-    // Clock
-    const elapsedTime = clock.getElapsedTime()
+    // // Clock
+    // const elapsedTime = clock.getElapsedTime()
 
-    // console.log('tick')
+    // // console.log('tick')
 
-    sphere.position.x += Math.sin(elapsedTime)
-    sphere.position.y += Math.cos(elapsedTime)
-    sphere.rotation.z = elapsedTime * Math.PI * 2 
-    camera.lookAt(sphere.position)
+    // sphere.position.x += Math.sin(elapsedTime)
+    // sphere.position.y += Math.cos(elapsedTime)
+    // sphere.rotation.z = elapsedTime * Math.PI * 2 
+    // camera.lookAt(sphere.position)
 
     renderer.render(scene, camera)
 
