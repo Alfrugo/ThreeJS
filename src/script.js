@@ -3,6 +3,7 @@ import * as THREE from 'three'
 import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls.js'
 // import * as dat from 'dat.gui'
 import typefaceFont from 'three/examples/fonts/helvetiker_regular.typeface.json'
+import { Mesh } from 'three'
 // console.log(THREE)
 
 console.log(OrbitControls)
@@ -61,6 +62,20 @@ renderer.setSize(sizes.width, sizes.height)
 renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2
     ))
 
-renderer.render(scene, camera)
+
+// Animations
+
+const tick = () => {
+    // console.log('tick')
+
+    sphere.position.x += 0.01
+
+    renderer.render(scene, camera)
+
+    window.requestAnimationFrame(tick)
+}
+
+tick()
+
 
  
