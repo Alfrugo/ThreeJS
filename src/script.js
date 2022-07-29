@@ -59,14 +59,24 @@ const  camera = new THREE.PerspectiveCamera(75, sizes.width / sizes.height, 0.1,
 camera.position.z = 5
 scene.add(camera)
 
-// Mouse tracking 
+// Mouse tracking cursor
+
+const cursor = {
+    x: 0, 
+    y: 0
+}
 
 window.addEventListener('mousemove', (event)=>{
-    console.log(event.clientX)
+    cursor.x = event.clientX / sizes.width - 0.5  //the -0.5 makes the value fluctuate between -0.5 to 0.5 indendent of the canvas size
+    cursor.y = event.clientY / sizes.height - 0.5
 })
+
+
+
+
 // Green Sock
 
-// gsap.to(sphere.position, { duration: 1, delay: 1, x: 2 }) 
+            // gsap.to(sphere.position, { duration: 1, delay: 1, x: 2 }) 
 
 
 // Controls
@@ -91,6 +101,10 @@ const tick = () => {
     const elapsedTime = clock.getElapsedTime()
 
     // // console.log('tick')
+
+    // update camera
+    camera.position.x = cursor.x * 4
+    camera.position.y = cursor.y * -6
 
     // sphere.position.x += Math.sin(elapsedTime)
     // sphere.position.y += Math.cos(elapsedTime)
