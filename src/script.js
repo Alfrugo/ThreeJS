@@ -81,6 +81,7 @@ window.addEventListener('mousemove', (event)=>{
 
 // Controls
 const controls = new OrbitControls(camera, canvas)
+controls.enableDamping = true
 
 
 //render
@@ -99,16 +100,17 @@ const tick = () => {
 
     // // Clock
     const elapsedTime = clock.getElapsedTime()
-
+    controls.update()
     // // console.log('tick')
 
     // update camera
-    camera.position.x = cursor.x * 4
-    camera.position.y = cursor.y * -6
+    // camera.position.x = cursor.x * 4
+    // camera.position.y = cursor.y * -6
+    // camera.lookAt(sphere.position)
 
     // sphere.position.x += Math.sin(elapsedTime)
     // sphere.position.y += Math.cos(elapsedTime)
-    sphere.rotation.z = elapsedTime * Math.PI * 0.5
+    // sphere.rotation.z = elapsedTime * Math.PI * 0.5
     // camera.lookAt(sphere.position)
 
     renderer.render(scene, camera)
