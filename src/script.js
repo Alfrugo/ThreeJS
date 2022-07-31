@@ -42,7 +42,15 @@ const sphere = new THREE.Mesh(
 //
 const gui = new dat.GUI()
 
+const parameter = {
+    color: 0xff0000
+}
 
+gui
+    .addColor(parameter, 'color')
+    .onChange(()=> {
+        material.color.set(parameter.color)
+    })
 
 
 // const plane = new THREE.Plane(
@@ -130,4 +138,18 @@ tick()
 
 // Debug elements
 gui.add(sphere.position, 'y', -3, 3, 0.01)
- 
+gui
+    .add(sphere.position, 'z')
+    .min(-3)
+    .max(3)
+    .step(0.01)
+    .name('elevation cube')
+
+gui 
+    .add(sphere, 'visible')
+
+gui 
+    .add(material, 'wireframe')
+
+gui
+    .addColor
