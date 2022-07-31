@@ -7,7 +7,11 @@ import typefaceFont from 'three/examples/fonts/helvetiker_regular.typeface.json'
 
 import gsap from 'gsap'
 
-console.log (gsap)
+import * as dat from 'lil-gui'
+
+console.log (dat)
+
+// console.log (gsap)
 // console.log(THREE)
 
 // console.log(OrbitControls)
@@ -33,6 +37,10 @@ const sphere = new THREE.Mesh(
     new THREE.BoxGeometry(1, 1, 1),
     material
 )
+//
+// Debug
+//
+const gui = new dat.GUI()
 
 
 
@@ -120,5 +128,6 @@ const tick = () => {
 
 tick()
 
-
+// Debug elements
+gui.add(sphere.position, 'y', -3, 3, 0.01)
  
