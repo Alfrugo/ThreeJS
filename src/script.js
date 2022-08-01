@@ -16,27 +16,7 @@ console.log (dat)
 
 // console.log(OrbitControls)
 
-// // Debug
-// const gui = new dat.GUI()
 
-// Canvas
-const canvas = document.querySelector('canvas.webgl')
-
-// Scene
-const scene = new THREE.Scene()
-
-// Clock to get the frame rate independent of computer CPU power
-
-const clock = new THREE.Clock()
-
-// Object
-
-const material = new THREE.MeshBasicMaterial({color: 0xff0000})
-
-const sphere = new THREE.Mesh(
-    new THREE.BoxGeometry(1, 1, 1),
-    material
-)
 //
 // Debug
 //
@@ -51,6 +31,29 @@ gui
     .onChange(()=> {
         material.color.set(parameter.color)
     })
+
+
+
+
+
+// Canvas
+const canvas = document.querySelector('canvas.webgl')
+
+// Scene
+const scene = new THREE.Scene()
+
+// Clock to get the frame rate independent of computer CPU power
+
+const clock = new THREE.Clock()
+
+// Object
+
+const material = new THREE.MeshBasicMaterial({color: parameter.color})
+
+const sphere = new THREE.Mesh(
+    new THREE.BoxGeometry(1, 1, 1),
+    material
+)
 
 
 // const plane = new THREE.Plane(
