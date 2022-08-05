@@ -2,6 +2,9 @@ import './style.css'
 import * as THREE from 'three'
 import * as dat from 'lil-gui'
 import gsap from 'gsap'
+import CANNON from 'cannon'
+
+console.log (CANNON)
 
 /**
  * Debug
